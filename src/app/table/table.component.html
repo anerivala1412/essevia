@@ -1,0 +1,22 @@
+<div class="component-style table-component">
+
+  <br>
+  <input class="button" type="button" value="+Col" (click)="addColumn()" />
+  <input class="button" type="button" value="+Row" (click)="addRow()" />
+  <table *ngIf="tableChoosed">
+    <tr *ngFor="let datum of data;let i = index">
+      <td>
+        <button (click)="removeRow(i)">Remove row</button>
+      </td>
+      <td> EN: </td>
+       <td *ngFor="let field of datum;let i = index">
+        <input type="text" [(ngModel)]="query"  name="name_{{i}}"  value="Checking_{{i}}" />
+        <div  *ngFor="let lock of characters | LockFilter: query">
+          <!-- <h3 class="card-text name" (click)="addCell(lock.accnum)">{{lock.accnum}}</h3> -->
+          <h3 class="card-text name" (click)="addCell(lock.accnum)">{{lock.name}}</h3>
+        </div>
+         <button (click)="removeColumn(i)">Remove</button>
+      </td> 
+    </tr>
+  </table>
+</div>
